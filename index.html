@@ -69,7 +69,6 @@ transition:.4s;
 
 button:hover{
 transform:scale(1.1);
-box-shadow:0 0 20px #ff3c9e;
 }
 
 /* THEMES */
@@ -111,7 +110,7 @@ max-width:90%;
 animation:rise 1.8s ease;
 }
 
-/* ================= TEDDY NEW RESPONSIVE ================= */
+/* ================= TEDDY ================= */
 
 #teddy{
 background:linear-gradient(140deg,#2b0035,#120018,#000);
@@ -131,15 +130,29 @@ flex-wrap:wrap;
 
 .teddyImg{
 width:100%;
-max-width:380px;
+max-width:420px;
 border-radius:30px;
 box-shadow:0 0 70px rgba(255,105,180,.6);
 animation:float 5s ease-in-out infinite;
 }
 
-.teddyCard{
+.teddyTextWrap{
 flex:1;
-min-width:280px;
+min-width:300px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.teddyReveal{
+font-family:'Great Vibes',cursive;
+font-size:clamp(40px,5vw,70px);
+margin-bottom:20px;
+text-align:left;
+text-shadow:0 0 20px rgba(255,255,255,.6);
+}
+
+.teddyCard{
 padding:50px;
 border-radius:30px;
 background:rgba(255,255,255,.05);
@@ -157,7 +170,7 @@ line-height:1.8;
 margin-top:20px;
 }
 
-/* MOBILE PERFECT */
+/* MOBILE */
 
 @media(max-width:768px){
 
@@ -168,7 +181,6 @@ overflow:auto;
 .theme{
 height:auto;
 min-height:100vh;
-padding-bottom:60px;
 }
 
 .teddyContainer{
@@ -176,25 +188,62 @@ flex-direction:column;
 gap:35px;
 }
 
-.teddyCard{
-padding:30px;
+.teddyTextWrap{
+align-items:center;
 text-align:center;
 }
 
+.teddyReveal{
+text-align:center;
 }
 
-/* TEXT */
+.teddyCard{
+padding:30px;
+}
 
-h1{
+}
+
+/* SKY ENDING */
+
+.sky{
+position:fixed;
+height:100%;
+width:100%;
+background:black;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+}
+
+.stars{
+position:absolute;
+width:100%;
+height:100%;
+background:url('https://www.transparenttextures.com/patterns/stardust.png');
+animation:moveStars 60s linear infinite;
+}
+
+.loveText{
 font-family:'Great Vibes',cursive;
-font-size:clamp(48px,6vw,85px);
-text-shadow:0 0 25px rgba(255,255,255,.8);
+font-size:clamp(60px,8vw,120px);
+color:white;
+text-shadow:0 0 40px #ff4da6,
+             0 0 80px #ff4da6,
+             0 0 120px #ff4da6;
+animation:fadeIn 4s ease;
+z-index:2;
 }
 
-p{
-margin-top:20px;
-font-size:clamp(16px,2vw,22px);
-line-height:1.7;
+@keyframes moveStars{
+from{background-position:0 0;}
+to{background-position:10000px 5000px;}
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:scale(.7);}
+to{opacity:1; transform:scale(1);}
 }
 
 /* PARTICLES */
@@ -221,14 +270,14 @@ from{opacity:0; transform:translateY(40px)}
 to{opacity:1; transform:translateY(0)}
 }
 
-/* NAME REVEAL */
+h1{
+font-family:'Great Vibes',cursive;
+font-size:clamp(48px,6vw,85px);
+}
 
-.reveal{
-position:absolute;
-top:8%;
-font-size:clamp(38px,5vw,65px);
-font-family:'Great Vibes';
-opacity:.9;
+p{
+margin-top:20px;
+font-size:clamp(16px,2vw,22px);
 }
 
 </style>
@@ -248,13 +297,11 @@ opacity:.9;
 </div>
 
 
-<!-- ================= CHOCOLATE ================= -->
+<!-- CHOCOLATE -->
 
 <div class="theme" id="choco">
 
 <div class="chocoBg"></div>
-
-<div class="reveal">For My Khushi ❤️</div>
 
 <div class="glass">
 <h1>Happy Chocolate Day 🍫</h1>
@@ -262,7 +309,6 @@ opacity:.9;
 <p>
 Just like chocolate, you make my life sweeter every single day.  
 Every moment with you melts my heart a little more.  
-
 You are my favorite addiction ❤️
 </p>
 </div>
@@ -277,15 +323,19 @@ You are my favorite addiction ❤️
 
 
 
-<!-- ================= TEDDY ================= -->
+<!-- TEDDY -->
 
 <div class="theme" id="teddy">
-
-<div class="reveal">Come Here... Hug Me 🧸</div>
 
 <div class="teddyContainer">
 
 <img src="Teddy.jpg" class="teddyImg">
+
+<div class="teddyTextWrap">
+
+<div class="teddyReveal">
+Come Here... Hug Me 🧸
+</div>
 
 <div class="teddyCard">
 
@@ -293,13 +343,11 @@ You are my favorite addiction ❤️
 
 <p>
 This teddy is cute… but not as cute as you.  
-
 Soft… but not as comforting as your hugs.  
-
-If you ever feel alone, just close your eyes —  
-you'll find me holding you.
+If you ever feel alone, just close your eyes — you'll find me holding you.
 </p>
 
+</div>
 </div>
 </div>
 
@@ -310,6 +358,15 @@ you'll find me holding you.
 </audio>
 
 </div>
+
+
+<!-- SKY ENDING -->
+
+<div class="sky" id="sky">
+<div class="stars"></div>
+<div class="loveText">I Love You Khushi ❤️</div>
+</div>
+
 
 
 <script>
@@ -324,6 +381,12 @@ startTheme("choco","song4","🍫","chocoParticles");
 
 else if(p==="1405"){
 startTheme("teddy","song5","❤️","teddyParticles");
+
+// SKY AFTER 12 SECONDS
+setTimeout(()=>{
+document.getElementById("sky").style.display="flex";
+},12000);
+
 }
 
 else{
