@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Our Love Story ❤️</title>
+<title>Our Love ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 
@@ -43,7 +43,6 @@ background:rgba(255,255,255,0.05);
 backdrop-filter:blur(20px);
 text-align:center;
 box-shadow:0 0 60px rgba(255,0,150,.5);
-animation:fade 2s;
 }
 
 input{
@@ -84,9 +83,10 @@ justify-content:center;
 align-items:center;
 flex-direction:column;
 text-align:center;
+overflow:hidden;
 }
 
-/* CHOCOLATE THEME */
+/* ================= CHOCOLATE ================= */
 
 #choco{
 background:linear-gradient(120deg,#1a0d00,#3b1600,#0d0600);
@@ -98,7 +98,7 @@ width:100%;
 height:100%;
 background:url('Chocolate.jpg') center/cover;
 opacity:.25;
-filter:blur(3px);
+filter:blur(4px);
 }
 
 .glass{
@@ -108,37 +108,79 @@ border-radius:30px;
 background:rgba(255,255,255,.06);
 backdrop-filter:blur(20px);
 max-width:90%;
-animation:rise 2s;
+animation:rise 1.8s ease;
 }
 
-/* TEDDY THEME */
+/* ================= TEDDY NEW RESPONSIVE ================= */
 
 #teddy{
 background:linear-gradient(140deg,#2b0035,#120018,#000);
+padding:40px 20px;
 }
 
-.teddyWrap{
-position:relative;
+.teddyContainer{
 z-index:2;
+width:100%;
+max-width:1300px;
 display:flex;
-flex-direction:column;
 align-items:center;
-animation:rise 2s;
+justify-content:center;
+gap:70px;
+flex-wrap:wrap;
 }
 
 .teddyImg{
-width:min(320px,75vw);
-border-radius:25px;
-box-shadow:0 0 60px rgba(255,105,180,.7);
-animation:float 4s ease-in-out infinite;
-margin-bottom:25px;
+width:100%;
+max-width:380px;
+border-radius:30px;
+box-shadow:0 0 70px rgba(255,105,180,.6);
+animation:float 5s ease-in-out infinite;
 }
 
-.card{
-padding:40px;
-border-radius:25px;
+.teddyCard{
+flex:1;
+min-width:280px;
+padding:50px;
+border-radius:30px;
 background:rgba(255,255,255,.05);
-backdrop-filter:blur(15px);
+backdrop-filter:blur(20px);
+}
+
+.teddyCard h1{
+font-family:'Great Vibes',cursive;
+font-size:clamp(42px,5vw,70px);
+}
+
+.teddyCard p{
+font-size:clamp(16px,1.6vw,20px);
+line-height:1.8;
+margin-top:20px;
+}
+
+/* MOBILE PERFECT */
+
+@media(max-width:768px){
+
+body{
+overflow:auto;
+}
+
+.theme{
+height:auto;
+min-height:100vh;
+padding-bottom:60px;
+}
+
+.teddyContainer{
+flex-direction:column;
+gap:35px;
+}
+
+.teddyCard{
+padding:30px;
+text-align:center;
+}
+
 }
 
 /* TEXT */
@@ -175,28 +217,18 @@ animation:up linear infinite;
 }
 
 @keyframes rise{
-from{opacity:0; transform:translateY(60px)}
+from{opacity:0; transform:translateY(40px)}
 to{opacity:1; transform:translateY(0)}
-}
-
-@keyframes fade{
-from{opacity:0}
 }
 
 /* NAME REVEAL */
 
 .reveal{
 position:absolute;
-top:40%;
-font-size:clamp(40px,6vw,70px);
+top:8%;
+font-size:clamp(38px,5vw,65px);
 font-family:'Great Vibes';
-opacity:0;
-animation:reveal 4s forwards;
-}
-
-@keyframes reveal{
-0%{opacity:0; letter-spacing:20px}
-100%{opacity:1; letter-spacing:3px}
+opacity:.9;
 }
 
 </style>
@@ -216,7 +248,7 @@ animation:reveal 4s forwards;
 </div>
 
 
-<!-- CHOCOLATE -->
+<!-- ================= CHOCOLATE ================= -->
 
 <div class="theme" id="choco">
 
@@ -228,11 +260,10 @@ animation:reveal 4s forwards;
 <h1>Happy Chocolate Day 🍫</h1>
 
 <p>
-Loving you is like tasting the world's finest chocolate…  
-rich, addictive, and impossible to resist.  
+Just like chocolate, you make my life sweeter every single day.  
+Every moment with you melts my heart a little more.  
 
-Every moment with you melts my heart  
-just a little more.
+You are my favorite addiction ❤️
 </p>
 </div>
 
@@ -246,31 +277,30 @@ just a little more.
 
 
 
-<!-- TEDDY -->
+<!-- ================= TEDDY ================= -->
 
 <div class="theme" id="teddy">
 
 <div class="reveal">Come Here... Hug Me 🧸</div>
 
-<div class="teddyWrap">
+<div class="teddyContainer">
 
 <img src="Teddy.jpg" class="teddyImg">
 
-<div class="card">
+<div class="teddyCard">
+
 <h1>Happy Teddy Day 🧸</h1>
 
 <p>
-This teddy is cute…  
-but not as cute as you.  
+This teddy is cute… but not as cute as you.  
 
 Soft… but not as comforting as your hugs.  
 
-If you ever feel alone,  
-just close your eyes —  
+If you ever feel alone, just close your eyes —  
 you'll find me holding you.
 </p>
-</div>
 
+</div>
 </div>
 
 <div class="particles" id="teddyParticles"></div>
@@ -293,7 +323,7 @@ startTheme("choco","song4","🍫","chocoParticles");
 }
 
 else if(p==="1405"){
-startTheme("teddy","song5","❤","teddyParticles");
+startTheme("teddy","song5","❤️","teddyParticles");
 }
 
 else{
@@ -317,7 +347,7 @@ function createParticles(symbol,id){
 
 let container=document.getElementById(id);
 
-for(let i=0;i<35;i++){
+for(let i=0;i<30;i++){
 
 let s=document.createElement("span");
 
