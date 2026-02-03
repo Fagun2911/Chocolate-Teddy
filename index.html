@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Love ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:black;
+color:white;
+}
+
+/* PASSWORD SCREEN */
+
+.lockScreen{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#000,#1a001f);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:999;
+}
+
+.lockBox{
+text-align:center;
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:20px;
+background:rgba(255,255,255,0.05);
+box-shadow:0 0 40px rgba(255,0,150,.4);
+animation:fadeIn 2s;
+}
+
+input{
+padding:12px 20px;
+border:none;
+border-radius:30px;
+outline:none;
+margin-top:15px;
+font-size:16px;
+}
+
+button{
+padding:12px 30px;
+border:none;
+border-radius:30px;
+margin-top:15px;
+background:#ff2e88;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.4s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* THEMES */
+
+.theme{
+position:absolute;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(.45);
+animation:slowZoom 25s infinite alternate;
+}
+
+.content{
+z-index:2;
+max-width:90%;
+animation:fadeUp 2s;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:clamp(42px,6vw,85px);
+text-shadow:0 0 25px rgba(255,255,255,.8);
+}
+
+p{
+margin-top:20px;
+font-size:clamp(16px,2vw,22px);
+line-height:1.7;
+}
+
+/* FLOATING HEARTS */
+
+.hearts span{
+position:absolute;
+bottom:-50px;
+font-size:24px;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:0}
+30%{opacity:1}
+100%{transform:translateY(-110vh);opacity:0}
+}
+
+@keyframes slowZoom{
+from{transform:scale(1)}
+to{transform:scale(1.15)}
+}
+
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(40px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+
+<div class="lockScreen" id="lock">
+<div class="lockBox">
+<h1 style="font-family:Great Vibes;">Enter Our Secret ❤️</h1>
+<input type="password" id="pass" placeholder="Enter Password">
+<br>
+<button onclick="unlock()">Unlock Love</button>
+</div>
+</div>
+
+<!-- CHOCOLATE THEME -->
+
+<div class="theme" id="choco">
+
+<img src="Chocolate.jpg" class="bg">
+
+<div class="content">
+<h1>Happy Chocolate Day 🍫</h1>
+
+<p>
+Just like chocolate,<br>
+you make my life sweeter every single day.<br><br>
+
+In your arms, I have found my home…  
+and in your smile, my forever happiness.
+</p>
+</div>
+
+<div class="hearts" id="hearts1"></div>
+
+<audio id="song4" loop>
+<source src="song4.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+
+<!-- TEDDY THEME -->
+
+<div class="theme" id="teddy">
+
+<img src="Teddy.jpg" class="bg">
+
+<div class="content">
+<h1>Happy Teddy Day 🧸</h1>
+
+<p>
+If I could,<br>
+I would gift you a giant teddy…<br>
+but then I realized —<br><br>
+
+No teddy in this world  
+can hug you as warmly as my heart does.
+</p>
+</div>
+
+<div class="hearts" id="hearts2"></div>
+
+<audio id="song5" loop>
+<source src="song5.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+
+<script>
+
+function unlock(){
+
+let p=document.getElementById("pass").value;
+
+if(p==="2000"){
+
+document.getElementById("lock").style.display="none";
+let t=document.getElementById("choco");
+t.style.display="flex";
+document.getElementById("song4").play();
+createHearts("hearts1");
+
+}
+
+else if(p==="1405"){
+
+document.getElementById("lock").style.display="none";
+let t=document.getElementById("teddy");
+t.style.display="flex";
+document.getElementById("song5").play();
+createHearts("hearts2");
+
+}
+
+else{
+alert("Wrong Password ❤️");
+}
+
+}
+
+function createHearts(id){
+
+let container=document.getElementById(id);
+
+for(let i=0;i<25;i++){
+
+let span=document.createElement("span");
+span.innerHTML="❤";
+span.style.left=Math.random()*100+"%";
+span.style.animationDuration=(5+Math.random()*5)+"s";
+span.style.fontSize=(15+Math.random()*30)+"px";
+
+container.appendChild(span);
+}
+}
+
+</script>
+
+</body>
+</html>
