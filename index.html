@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For My Love ❤️</title>
+<title>Our Love Story ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,55 +14,54 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Montserrat',sans-serif;
 }
 
 body{
-height:100vh;
-overflow:hidden;
 background:black;
+overflow:hidden;
 color:white;
 }
 
-/* PASSWORD SCREEN */
+/* LOCK SCREEN */
 
-.lockScreen{
+.lock{
 position:fixed;
-width:100%;
 height:100%;
-background:linear-gradient(135deg,#000,#1a001f);
+width:100%;
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
+background:radial-gradient(circle,#0a0014,#000);
 z-index:999;
 }
 
-.lockBox{
-text-align:center;
-backdrop-filter:blur(20px);
-padding:40px;
-border-radius:20px;
+.box{
+padding:45px;
+border-radius:25px;
 background:rgba(255,255,255,0.05);
-box-shadow:0 0 40px rgba(255,0,150,.4);
-animation:fadeIn 2s;
+backdrop-filter:blur(20px);
+text-align:center;
+box-shadow:0 0 60px rgba(255,0,150,.5);
+animation:fade 2s;
 }
 
 input{
-padding:12px 20px;
-border:none;
+padding:14px 20px;
 border-radius:30px;
+border:none;
 outline:none;
-margin-top:15px;
+margin-top:20px;
 font-size:16px;
+width:220px;
 }
 
 button{
-padding:12px 30px;
-border:none;
+padding:14px 35px;
 border-radius:30px;
-margin-top:15px;
-background:#ff2e88;
+border:none;
+margin-top:20px;
+background:#ff3c9e;
 color:white;
 font-size:16px;
 cursor:pointer;
@@ -71,38 +70,82 @@ transition:.4s;
 
 button:hover{
 transform:scale(1.1);
+box-shadow:0 0 20px #ff3c9e;
 }
 
 /* THEMES */
 
 .theme{
 position:absolute;
-width:100%;
 height:100%;
+width:100%;
 display:none;
 justify-content:center;
 align-items:center;
+flex-direction:column;
 text-align:center;
 }
 
-.bg{
+/* CHOCOLATE THEME */
+
+#choco{
+background:linear-gradient(120deg,#1a0d00,#3b1600,#0d0600);
+}
+
+.chocoBg{
 position:absolute;
 width:100%;
 height:100%;
-object-fit:cover;
-filter:brightness(.45);
-animation:slowZoom 25s infinite alternate;
+background:url('Chocolate.jpg') center/cover;
+opacity:.25;
+filter:blur(3px);
 }
 
-.content{
+.glass{
 z-index:2;
+padding:50px;
+border-radius:30px;
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(20px);
 max-width:90%;
-animation:fadeUp 2s;
+animation:rise 2s;
 }
+
+/* TEDDY THEME */
+
+#teddy{
+background:linear-gradient(140deg,#2b0035,#120018,#000);
+}
+
+.teddyWrap{
+position:relative;
+z-index:2;
+display:flex;
+flex-direction:column;
+align-items:center;
+animation:rise 2s;
+}
+
+.teddyImg{
+width:min(320px,75vw);
+border-radius:25px;
+box-shadow:0 0 60px rgba(255,105,180,.7);
+animation:float 4s ease-in-out infinite;
+margin-bottom:25px;
+}
+
+.card{
+padding:40px;
+border-radius:25px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
+}
+
+/* TEXT */
 
 h1{
 font-family:'Great Vibes',cursive;
-font-size:clamp(42px,6vw,85px);
+font-size:clamp(48px,6vw,85px);
 text-shadow:0 0 25px rgba(255,255,255,.8);
 }
 
@@ -112,34 +155,48 @@ font-size:clamp(16px,2vw,22px);
 line-height:1.7;
 }
 
-/* FLOATING HEARTS */
+/* PARTICLES */
 
-.hearts span{
+.particles span{
 position:absolute;
 bottom:-50px;
-font-size:24px;
-animation:float 10s linear infinite;
+animation:up linear infinite;
 }
 
-@keyframes float{
+@keyframes up{
 0%{transform:translateY(0);opacity:0}
 30%{opacity:1}
 100%{transform:translateY(-110vh);opacity:0}
 }
 
-@keyframes slowZoom{
-from{transform:scale(1)}
-to{transform:scale(1.15)}
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
 }
 
-@keyframes fadeUp{
-from{opacity:0; transform:translateY(40px)}
+@keyframes rise{
+from{opacity:0; transform:translateY(60px)}
 to{opacity:1; transform:translateY(0)}
 }
 
-@keyframes fadeIn{
+@keyframes fade{
 from{opacity:0}
-to{opacity:1}
+}
+
+/* NAME REVEAL */
+
+.reveal{
+position:absolute;
+top:40%;
+font-size:clamp(40px,6vw,70px);
+font-family:'Great Vibes';
+opacity:0;
+animation:reveal 4s forwards;
+}
+
+@keyframes reveal{
+0%{opacity:0; letter-spacing:20px}
+100%{opacity:1; letter-spacing:3px}
 }
 
 </style>
@@ -147,67 +204,79 @@ to{opacity:1}
 
 <body>
 
-<!-- PASSWORD SCREEN -->
+<!-- LOCK -->
 
-<div class="lockScreen" id="lock">
-<div class="lockBox">
-<h1 style="font-family:Great Vibes;">Enter Our Secret ❤️</h1>
-<input type="password" id="pass" placeholder="Enter Password">
+<div class="lock" id="lock">
+<div class="box">
+<h1 style="font-family:Great Vibes;">Enter Our Love Code ❤️</h1>
+<input type="password" id="pass" placeholder="Password">
 <br>
-<button onclick="unlock()">Unlock Love</button>
+<button onclick="unlock()">Unlock</button>
 </div>
 </div>
 
-<!-- CHOCOLATE THEME -->
+
+<!-- CHOCOLATE -->
 
 <div class="theme" id="choco">
 
-<img src="Chocolate.jpg" class="bg">
+<div class="chocoBg"></div>
 
-<div class="content">
+<div class="reveal">For My Khushi ❤️</div>
+
+<div class="glass">
 <h1>Happy Chocolate Day 🍫</h1>
 
 <p>
-Just like chocolate,<br>
-you make my life sweeter every single day.<br><br>
+Loving you is like tasting the world's finest chocolate…  
+rich, addictive, and impossible to resist.  
 
-In your arms, I have found my home…  
-and in your smile, my forever happiness.
+Every moment with you melts my heart  
+just a little more.
 </p>
 </div>
 
-<div class="hearts" id="hearts1"></div>
+<div class="particles" id="chocoParticles"></div>
 
 <audio id="song4" loop>
-<source src="song4.mp3" type="audio/mpeg">
+<source src="song4.mp3">
 </audio>
 
 </div>
 
 
-<!-- TEDDY THEME -->
+
+<!-- TEDDY -->
 
 <div class="theme" id="teddy">
 
-<img src="Teddy.jpg" class="bg">
+<div class="reveal">Come Here... Hug Me 🧸</div>
 
-<div class="content">
+<div class="teddyWrap">
+
+<img src="Teddy.jpg" class="teddyImg">
+
+<div class="card">
 <h1>Happy Teddy Day 🧸</h1>
 
 <p>
-If I could,<br>
-I would gift you a giant teddy…<br>
-but then I realized —<br><br>
+This teddy is cute…  
+but not as cute as you.  
 
-No teddy in this world  
-can hug you as warmly as my heart does.
+Soft… but not as comforting as your hugs.  
+
+If you ever feel alone,  
+just close your eyes —  
+you'll find me holding you.
 </p>
 </div>
 
-<div class="hearts" id="hearts2"></div>
+</div>
+
+<div class="particles" id="teddyParticles"></div>
 
 <audio id="song5" loop>
-<source src="song5.mp3" type="audio/mpeg">
+<source src="song5.mp3">
 </audio>
 
 </div>
@@ -220,44 +289,44 @@ function unlock(){
 let p=document.getElementById("pass").value;
 
 if(p==="2000"){
-
-document.getElementById("lock").style.display="none";
-let t=document.getElementById("choco");
-t.style.display="flex";
-document.getElementById("song4").play();
-createHearts("hearts1");
-
+startTheme("choco","song4","🍫","chocoParticles");
 }
 
 else if(p==="1405"){
-
-document.getElementById("lock").style.display="none";
-let t=document.getElementById("teddy");
-t.style.display="flex";
-document.getElementById("song5").play();
-createHearts("hearts2");
-
+startTheme("teddy","song5","❤","teddyParticles");
 }
 
 else{
 alert("Wrong Password ❤️");
 }
-
 }
 
-function createHearts(id){
+function startTheme(themeId,song,emoji,particleId){
+
+document.getElementById("lock").style.display="none";
+
+let t=document.getElementById(themeId);
+t.style.display="flex";
+
+document.getElementById(song).play();
+
+createParticles(emoji,particleId);
+}
+
+function createParticles(symbol,id){
 
 let container=document.getElementById(id);
 
-for(let i=0;i<25;i++){
+for(let i=0;i<35;i++){
 
-let span=document.createElement("span");
-span.innerHTML="❤";
-span.style.left=Math.random()*100+"%";
-span.style.animationDuration=(5+Math.random()*5)+"s";
-span.style.fontSize=(15+Math.random()*30)+"px";
+let s=document.createElement("span");
 
-container.appendChild(span);
+s.innerHTML=symbol;
+s.style.left=Math.random()*100+"%";
+s.style.fontSize=(15+Math.random()*25)+"px";
+s.style.animationDuration=(6+Math.random()*6)+"s";
+
+container.appendChild(s);
 }
 }
 
